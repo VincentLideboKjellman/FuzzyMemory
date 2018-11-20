@@ -11,10 +11,21 @@
 }
 
 .memoryBoard{
-width: 640px;
-height: 640px;
-margin: auto;
-display: flex;
-flex-flow: wrap;
+  width: 640px;
+  height: 640px;
+  margin: auto;
+  display: flex;
+  flex-flow: wrap;
+}
 
+.memoryCard{
+  /* width: calc(25% - 10px);
+  height: calc(33.333% - 10px);
+  box-shadow: 1px 1px 1px rgba(0,0,0,.3);   FROM INTERNET */
+
+  background-color: blue;
+  width:15%;
+  height: 15%;
+  margin: 10px;
+  position: relative;
 }
