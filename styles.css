@@ -16,6 +16,8 @@
   margin: auto;
   display: flex;
   flex-flow: wrap;
+
+  perspective: 1000px; /*To make 3d effect on the turning*/
 }
 
 .memoryCard{
@@ -28,21 +30,34 @@
   height: 125px;
   margin: 7px;
   position: relative;
-
-   transform: scale(1);
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform .3s;
 }
 .memoryCard:active {
   transform: scale(0.97);
-  transition: transform .2s;
+  transition: transform .3s;
+}
+.memoryCard.turn{
+  transition-duration: .3s;
+  transform: rotateY(180deg);
+  background-color: hotpink;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.4);
 }
 
-/* .front-face, /*This is classes for the images*/
-/* .back-face {
+/*This is classes for the images*/
+.front-face,
+.back-face {
   width: 20%;
   height: 20%;
   padding: 20px;
   position: absolute;
   border-radius: 5px;
   background: #1C7CCC;
+  backface-visibility: hidden;
 
-} */
+}
+
+.fron-face{
+  transform: rotateY(180deg);
+}
