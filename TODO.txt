@@ -1,0 +1,6 @@
+1. Bygg upp HTML struktur
+2. Grov-styling i CSS
+3. Javascript funktioner.
+4.
+5.
+6.
