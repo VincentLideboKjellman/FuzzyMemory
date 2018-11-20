@@ -11,8 +11,8 @@
 }
 
 .memoryBoard{
-  width: 640px;
-  height: 640px;
+  width: 600px;
+  height: 600px;
   margin: auto;
   display: flex;
   flex-flow: wrap;
@@ -24,8 +24,19 @@
 
   background-color: blue;
   box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
-  width:15%;
-  height: 15%;
-  margin: 10px;
+  width: 125px;
+  height: 125px;
+  margin: 7px;
   position: relative;
 }
+
+/* .front-face, /*This is classes for the images*/
+/* .back-face {
+  width: 20%;
+  height: 20%;
+  padding: 20px;
+  position: absolute;
+  border-radius: 5px;
+  background: #1C7CCC;
+
+} */
