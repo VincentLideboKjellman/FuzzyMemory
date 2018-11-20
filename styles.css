@@ -23,11 +23,17 @@
   height: calc(33.333% - 10px); FROM INTERNET */
 
   background-color: blue;
-  box-shadow: 3px 3px 3px rgba(0,0,0,0.3);
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.4);
   width: 125px;
   height: 125px;
   margin: 7px;
   position: relative;
+
+   transform: scale(1);
+}
+.memoryCard:active {
+  transform: scale(0.97);
+  transition: transform .2s;
 }
 
 /* .front-face, /*This is classes for the images*/
