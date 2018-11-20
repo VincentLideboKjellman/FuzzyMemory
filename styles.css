@@ -46,7 +46,7 @@
 }
 
 /*This is classes for the images*/
-.front-face,
+/* .front-face,
 .back-face {
   width: 20%;
   height: 20%;
@@ -56,7 +56,7 @@
   background: #1C7CCC;
   backface-visibility: hidden;
 
-}
+} */
 
 .fron-face{
   transform: rotateY(180deg);
