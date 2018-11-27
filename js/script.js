@@ -1,9 +1,17 @@
 // Turning Card:
-
 const memoryCards = document.querySelectorAll('.memoryCard');
 
+let hasTurnedCard = false;
+let firstCard, secondCard;
+
 function turnCard(){
-  this.classList.toggle('turn');
+  this.classList.add('turn');
+}
+
+if (!hasTurnedCard) {
+  hasTurnedCard = true;
+  firstCard = this;
+  return;
 }
 
 memoryCards.forEach(memoryCard => memoryCard.addEventListener('click', turnCard));
@@ -11,9 +19,9 @@ memoryCards.forEach(memoryCard => memoryCard.addEventListener('click', turnCard)
 
 
 
-// Lägg till array och fixa i html istället för hårdkodning
 
-//array logic
+
+// Lägg till array och fixa i html istället för hårdkodning
 // let hardGame = cards.concat(cards);
 // hardGame.sort(() => 0.5 - Math.random());
 //
