@@ -2,23 +2,25 @@
 const memoryCards = document.querySelectorAll('.memoryCard');
 
 let hasTurnedCard = false;
+let lockBoard = false;
 let firstCard, secondCard;
 
 function turnCard(){
   this.classList.add('turn');
-}
 
-if (!hasTurnedCard) {
-  hasTurnedCard = true;
-  firstCard = this;
-  return;
-   }
+  if (lockBoard) return;
 
-   secondCard = this;
-   hasFlippedCard = false;
+  if (!hasTurnedCard) {
+    hasTurnedCard = true;
+    firstCard = this;
+    return;
+     }
 
-   checkForMatch();
- // }
+     secondCard = this;
+     hasFlippedCard = false;
+
+     checkForMatch();
+  }
 
  function checkForMatch() {
    if (firstCard.dataset.framework === secondCard.dataset.framework) {
@@ -35,9 +37,13 @@ if (!hasTurnedCard) {
  }
 
  function unflipCards() {
+   lockBoard = true;
+
    setTimeout(() => {
      firstCard.classList.remove('flip');
      secondCard.classList.remove('flip');
+
+     lockBoard = false;
    }, 1500);
  }
 
