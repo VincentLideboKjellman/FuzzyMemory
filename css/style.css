@@ -27,6 +27,13 @@ body {
   width: 150px;
 }
 
+.card,
+.back,
+.front {
+  height: 150px;
+  width: 150px;
+}
+
 .selected {
   border: 4px solid blue;
 }

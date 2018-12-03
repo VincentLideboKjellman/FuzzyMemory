@@ -70,37 +70,45 @@ game.appendChild(grid);
 
 
 gameGrid.forEach(item => {
-  //Gör en function innanför foreachen??
-
   //sparar värdet att skapa en div i card
   const card = document.createElement('div');
-
   //lägger till en card class på card div:en
   card.classList.add('card');
-
   //data-name attributet får namnet av saken i arrayen?? (läggs till på div:en?)
   card.dataset.name = item.name;
 
+  //sparar att skapa en div i front variablen och lägger till front klassen.
+  const front = document.createElement('div');
+  front.classList.add('front');
+
+  const back = document.createElement('div');
+  back.classList.add('back');
   //lägger till en style på div:en som är backgroundimage, värdet på url:en är img från item som kommer från arryen
-  card.style.backgroundImage = `url(${item.img})`;
+  back.style.backgroundImage = `url(${item.img})`;
 
   //card div:en läggs nu in under grid sektionen
   grid.appendChild(card);
+  // och back och front div:arna under card div:en
+  card.appendChild(front);
+  card.appendChild(back);
 });
 
 
 //variabel för att hålla antal tryck på korten
 let count = 0;
 
+let delay = 1200;
 let firstGuess = '';
 let secondGuess = '';
+let previousTarget = null;
 //lägger till en click event listerner
 grid.addEventListener('click', function (event){
   //Event targetet är det som skall bli klickat på
   let clicked = event.target;
 
   //bara divar i sectionen kan bli klickbart
-  if (clicked.nodeName === 'SECTION') {
+  // clicked === previousTarget gör så man inte kan trycka på samma ikon 2 gånger för att matcha
+  if (clicked.nodeName === 'SECTION' || clicked === previousTarget) {
     return;
   }
 
@@ -109,21 +117,33 @@ grid.addEventListener('click', function (event){
     count++;
     if (count === 1) {
       //får värdet av name datasettet (namnen från arryen) som den har
-      firstGuess = clicked.dataset.name;
+      //(parentNode för att dartasettet är på den yttre div:en men vi trycker på den indre diven front och back)
+      firstGuess = clicked.parentNode.dataset.name;
 
       //lägger till klassen selected
-      clicked.classList.add('selected');
+      clicked.parentNode.classList.add('selected');
     }else{
-      secondGuess = clicked.dataset.name;
-      clicked.classList.add('selected');
+      secondGuess = clicked.parentNode.dataset.name;
+      clicked.parentNode.classList.add('selected');
     }
+
     // om båda gissningarna inte är tomma och om de har samma dataset namn (matchar)
     // run:a match funktionen
+    // och om det är en match kör reserGuesses funktionen som tar bort selected
+    // även om det inte är en match (i else)
+    //setTimeout metoden gör saker efter en specifik tid, tidens värde ligger i delay variabeln
+    // (metoderna i setTimeout är callbacks, alltså funktioner använda som argument,
+    //det är därför det inte har parantes längre)
     if (firstGuess !== '' && secondGuess !== '') {
       if (firstGuess === secondGuess) {
-        match();
+        setTimeout(match, delay);
+        setTimeout(resetGuesses, delay);
+      } else{
+          setTimeout(resetGuesses, delay);
       }
     }
+    // sätter varibalen till klickad
+    previousTarget = clicked;
   }
 });
 
@@ -136,3 +156,15 @@ const match = () => {
     card.classList.add('match');
   });
 }
+
+//sätter tillbaka alla guess värden och tar bort selected klassen från divs
+const resetGuesses = () => {
+  firstGuess = '';
+  secondGuess = '';
+  count = 0;
+
+  var selected = document.querySelectorAll('.selected');
+  selected.forEach(card => {
+    card.classList.remove('selected');
+  })
+};
