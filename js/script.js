@@ -1,44 +1,44 @@
 "use strict";
 
 const cardsArray = [{
-    'name': 'shell',
-    'img': 'img/blueshell.png',
+    'name': '3ds',
+    'img': 'img/3ds.png',
   },
   {
-    'name': 'star',
-    'img': 'img/star.png',
+    'name': 'css',
+    'img': 'img/css.png',
   },
   {
-    'name': 'bobomb',
-    'img': 'img/bobomb.png',
+    'name': 'figma',
+    'img': 'img/figma.png',
   },
   {
-    'name': 'mario',
-    'img': 'img/mario.png',
+    'name': 'html',
+    'img': 'img/html.png',
   },
   {
-    'name': 'luigi',
-    'img': 'img/luigi.png',
+    'name': 'illustrator',
+    'img': 'img/illustrator.png',
   },
   {
-    'name': 'peach',
-    'img': 'img/peach.png',
+    'name': 'js',
+    'img': 'img/js.png',
   },
   {
-    'name': '1up',
-    'img': 'img/1up.png',
+    'name': 'php',
+    'img': 'img/php.png',
   },
   {
-    'name': 'mushroom',
-    'img': 'img/mushroom.png',
+    'name': 'sketch',
+    'img': 'img/sketch.png',
   },
   {
-    'name': 'thwomp',
-    'img': 'img/thwomp.png',
+    'name': 'slack',
+    'img': 'img/slack.png',
   },
   {
-    'name': 'bulletbill',
-    'img': 'img/bulletbill.png',
+    'name': 'sqlite',
+    'img': 'img/sqlite.png',
   },
   // {
   //   'name': 'coin',
@@ -59,7 +59,7 @@ const cardsArray = [{
 const game = document.getElementById('game');
 
 //sparar funktionen att skapa ett section element i grid variablen
-const grid = document.createElement("section");
+const grid = document.createElement('section');
 //sectionen får klassen grid på sig
 grid.setAttribute('class', 'grid');
 
@@ -67,7 +67,7 @@ grid.setAttribute('class', 'grid');
 game.appendChild(grid);
 
 
-cardsArray.forEach(item =>{
+cardsArray.forEach(item => {
   //Gör en function innanför foreachen??
 
   //sparar värdet att skapa en div i card
