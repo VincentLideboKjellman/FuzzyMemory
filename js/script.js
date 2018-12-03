@@ -40,26 +40,29 @@ const cardsArray = [{
     'name': 'sqlite',
     'img': 'img/sqlite.png',
   },
-  // {
-  //   'name': 'coin',
-  //   'img': 'img/coin.png',
-  // },
-  // {
-  //   'name': 'goomba',
-  //   'img': 'img/goomba.png',
-  // },
 ];
 
-// save the element (the div with id game) and create a new section with a new class called grid and
-//append it to the dom inside our game div
 
 // Över-sepcifika quotes är för min egna skull
+
+//variabel för att hålla antal tryck på korten
+let count = 0;
+
+//duplicerar arrayen (behöver 2 kort av varje)
+let gameGrid = cardsArray.concat(cardsArray);
+
+//shufflar arrayen
+gameGrid.sort(() => 0.5 - Math.random());
+
+
 
 //sparar allt med id 'game' i variabeln game
 const game = document.getElementById('game');
 
 //sparar funktionen att skapa ett section element i grid variablen
 const grid = document.createElement('section');
+
+
 //sectionen får klassen grid på sig
 grid.setAttribute('class', 'grid');
 
@@ -67,7 +70,7 @@ grid.setAttribute('class', 'grid');
 game.appendChild(grid);
 
 
-cardsArray.forEach(item => {
+gameGrid.forEach(item => {
   //Gör en function innanför foreachen??
 
   //sparar värdet att skapa en div i card
@@ -84,5 +87,22 @@ cardsArray.forEach(item => {
 
   //card div:en läggs nu in under grid sektionen
   grid.appendChild(card);
+});
+
+//lägger till en click event listerner
+grid.addEventListener('click', function (event){
+  //Event targetet är det som skall bli klickat på
+  let clicked = event.target;
+
+  //bara divar i sectionen kan bli klickbart
+  if (clicked.nodeName === 'SECTION') {
+    return;
+  }
+
+  if (count < 2) {
+    count++;
+    //lägger till klassen selected
+    clicked.classList.add('selected');
+  }
 
 });
