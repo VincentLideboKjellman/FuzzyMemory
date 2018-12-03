@@ -119,11 +119,12 @@ grid.addEventListener('click', function (event){
       //får värdet av name datasettet (namnen från arryen) som den har
       //(parentNode för att dartasettet är på den yttre div:en men vi trycker på den indre diven front och back)
       firstGuess = clicked.parentNode.dataset.name;
-
+      console.log(firstGuess);
       //lägger till klassen selected
       clicked.parentNode.classList.add('selected');
     }else{
       secondGuess = clicked.parentNode.dataset.name;
+      console.log(secondGuess);
       clicked.parentNode.classList.add('selected');
     }
 
