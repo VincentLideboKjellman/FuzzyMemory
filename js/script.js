@@ -43,7 +43,7 @@ const cardsArray = [{
 ];
 
 
-// Över-sepcifika quotes är för min egna skull
+// NOTE:  Över-sepcifika quotes är för min egna skull
 
 
 
@@ -108,7 +108,7 @@ grid.addEventListener('click', function (event){
 
   //bara divar i sectionen kan bli klickbart
   // clicked === previousTarget gör så man inte kan trycka på samma ikon 2 gånger för att matcha
-  if (clicked.nodeName === 'SECTION' || clicked === previousTarget) {
+  if (clicked.nodeName === 'SECTION' || clicked === previousTarget || clicked.parentNode.classList.contains('selected')) {
     return;
   }
 
