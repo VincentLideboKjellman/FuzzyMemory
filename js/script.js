@@ -45,8 +45,7 @@ const cardsArray = [{
 
 // Över-sepcifika quotes är för min egna skull
 
-//variabel för att hålla antal tryck på korten
-let count = 0;
+
 
 //duplicerar arrayen (behöver 2 kort av varje)
 let gameGrid = cardsArray.concat(cardsArray);
@@ -89,6 +88,12 @@ gameGrid.forEach(item => {
   grid.appendChild(card);
 });
 
+
+//variabel för att hålla antal tryck på korten
+let count = 0;
+
+let firstGuess = '';
+let secondGuess = '';
 //lägger till en click event listerner
 grid.addEventListener('click', function (event){
   //Event targetet är det som skall bli klickat på
@@ -99,10 +104,35 @@ grid.addEventListener('click', function (event){
     return;
   }
 
+  //om count är mindre än 2 så kan den ökas
   if (count < 2) {
     count++;
-    //lägger till klassen selected
-    clicked.classList.add('selected');
-  }
+    if (count === 1) {
+      //får värdet av name datasettet (namnen från arryen) som den har
+      firstGuess = clicked.dataset.name;
 
+      //lägger till klassen selected
+      clicked.classList.add('selected');
+    }else{
+      secondGuess = clicked.dataset.name;
+      clicked.classList.add('selected');
+    }
+    // om båda gissningarna inte är tomma och om de har samma dataset namn (matchar)
+    // run:a match funktionen
+    if (firstGuess !== '' && secondGuess !== '') {
+      if (firstGuess === secondGuess) {
+        match();
+      }
+    }
+  }
 });
+
+//metoden Lägger till klassen match på allt som har fått klassen selected
+// queryselectorAll samlar all selected i en array, sen loopar man igenom
+//dem och lägger till match klassen.
+const match = () => {
+  var selected = document.querySelectorAll('.selected');
+  selected.forEach(card => {
+    card.classList.add('match');
+  });
+}
