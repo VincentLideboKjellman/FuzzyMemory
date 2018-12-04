@@ -92,6 +92,7 @@ function makeCards () {
   card.appendChild(back);
 });
 }
+
 makeCards(gameGrid);
 
 const restartGame = () => {
@@ -144,6 +145,7 @@ const resetGuesses = () => {
   firstGuess = '';
   secondGuess = '';
   count = 0;
+
   var selected = document.querySelectorAll('.selected');
   selected.forEach(card => {
     card.classList.remove('selected');
