@@ -42,6 +42,18 @@ const cardsArray = [{
   },
 ];
 
+//Creates the board
+const game = document.getElementById('game');
+const grid = document.createElement('section');
+grid.setAttribute('class', 'grid');
+game.appendChild(grid);
+let count = 0;
+let delay = 1200;
+let firstGuess = '';
+let secondGuess = '';
+let previousTarget = null;
+
+//Restarts the game
 let restartButton = document.getElementById('restartButton');
 restartButton.addEventListener('click', ()=>{
 restartGame();
@@ -53,19 +65,15 @@ const removeCards = () =>{
 
 let gameGrid = cardsArray.concat(cardsArray);
 
+
 function shuffleReset() {
   return 0.5 - Math.random();
   }
-
 gameGrid.sort(shuffleReset);
 
-const game = document.getElementById('game');
-const grid = document.createElement('section');
-grid.setAttribute('class', 'grid');
-
-game.appendChild(grid);
 
 
+//Adds values to cards
 function makeCards () {
   gameGrid.forEach(item => {
   const card = document.createElement('div');
@@ -84,7 +92,6 @@ function makeCards () {
   card.appendChild(back);
 });
 }
-
 makeCards(gameGrid);
 
 const restartGame = () => {
@@ -93,12 +100,8 @@ const restartGame = () => {
   makeCards();
 };
 
-let count = 0;
-let delay = 1200;
-let firstGuess = '';
-let secondGuess = '';
-let previousTarget = null;
 
+//Makes the game work with the game features (Clicking and matching)
 grid.addEventListener('click', function (event){
   let clicked = event.target;
 
@@ -141,7 +144,6 @@ const resetGuesses = () => {
   firstGuess = '';
   secondGuess = '';
   count = 0;
-
   var selected = document.querySelectorAll('.selected');
   selected.forEach(card => {
     card.classList.remove('selected');
