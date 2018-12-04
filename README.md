@@ -13,6 +13,7 @@ A Memory game in HTML, CSS and HTML for an assignment.
 
 ## Testers
 * Erik Arvidsson
+* Charmaine Wang
 
 ## Author
 * Vincent Lidebo Kjellman
