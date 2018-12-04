@@ -47,14 +47,25 @@ const cardsArray = [{
 
 
 
+let restartButton = document.getElementById('restartButton');
+restartButton.addEventListener('click', ()=>{
+restartGame();
+});
+
+const removeCards = () =>{
+  grid.innerHTML = "";
+}
+
 //duplicerar arrayen (behöver 2 kort av varje)
 let gameGrid = cardsArray.concat(cardsArray);
 
+function shuffleReset() {
+  return 0.5 - Math.random();
+  }
+
 //shufflar arrayen
-gameGrid.sort(() => 0.5 - Math.random());
-
-
-
+gameGrid.sort(shuffleReset);
+// shuffleReset();
 //sparar allt med id 'game' i variabeln game
 const game = document.getElementById('game');
 
@@ -69,7 +80,7 @@ grid.setAttribute('class', 'grid');
 game.appendChild(grid);
 
 
-gameGrid.forEach(item => {
+function makeCards () {gameGrid.forEach(item => {
   //sparar värdet att skapa en div i card
   const card = document.createElement('div');
   //lägger till en card class på card div:en
@@ -92,6 +103,18 @@ gameGrid.forEach(item => {
   card.appendChild(front);
   card.appendChild(back);
 });
+
+}
+makeCards(gameGrid);
+
+const restartGame = () => {
+  removeCards();
+  gameGrid.sort(shuffleReset);
+  makeCards();
+
+
+};
+
 
 
 //variabel för att hålla antal tryck på korten
