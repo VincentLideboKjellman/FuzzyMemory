@@ -80,7 +80,8 @@ grid.setAttribute('class', 'grid');
 game.appendChild(grid);
 
 
-function makeCards () {gameGrid.forEach(item => {
+function makeCards () {
+  gameGrid.forEach(item => {
   //sparar värdet att skapa en div i card
   const card = document.createElement('div');
   //lägger till en card class på card div:en
@@ -111,11 +112,7 @@ const restartGame = () => {
   removeCards();
   gameGrid.sort(shuffleReset);
   makeCards();
-
-
 };
-
-
 
 //variabel för att hålla antal tryck på korten
 let count = 0;
